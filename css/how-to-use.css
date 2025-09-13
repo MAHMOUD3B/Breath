@@ -1,0 +1,59 @@
+/* How To Use Start */
+
+.how-use {
+  .title {
+    text-align: center;
+    background: #01818a;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+
+  .how-use-feild {
+    margin: auto;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+    color: var(--main-color);
+    line-height: 2;
+   
+
+    .icon-img {
+      width: 35px;
+      height: 35px;
+      margin-inline: 10px;
+    }
+
+    h3 {
+      background: #01818a;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 20px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    p,
+    span {
+      font-size: 16px;
+      color: #333;
+    }
+  }
+}
+
+  .how-use-feild ul li{
+    color:var(--main-color);
+  }
+@media (max-width: 768px) {
+  .how-use-feild {
+    margin-left: auto; /* تتوسّط */
+    margin-right: auto; /* تتوسّط */
+  }
+}
+/* How To Use End */

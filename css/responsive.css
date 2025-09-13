@@ -1,0 +1,86 @@
+/* Home Page */
+@media (max-width: 576px) {
+  /* Start Navbar */
+  .navbar {
+    .navbar-brand {
+      img {
+        width: 100px;
+      }
+    }
+  }
+  /* End Navbar */
+
+  /* Start Carousel */
+  .slider {
+    .video-slide {
+      max-height: 200px;
+      overflow: hidden;
+      video {
+        margin-top: -130px;
+      }
+    }
+  }
+  /* End Carousel */
+
+  /* How To Use Start */
+  .usability {
+    .how-use {
+      .how-to-use {
+        text-align: center;
+        min-height: 150px;
+        img {
+          margin: 5px auto;
+        }
+      }
+    }
+  }
+  /* How To Use End */
+
+  /* offers buttons start */
+  .offers-btns {
+    .offers-btn:first-child {
+      margin-bottom: 20px;
+    }
+  }
+  /* offers buttons end */
+
+  /* services start */
+  /* services end */
+
+  /* footer start */
+  .footer {
+    padding: 50px 20px;
+    .footer-field {
+      margin-bottom: 20px !important;
+      justify-content: start !important;
+    }
+  }
+  /* footer end */
+}
+
+/* How To Use Page */
+@media (max-width: 576px) {
+  .how-use-feild {
+    h3 {
+      font-size: 18px !important;
+    }
+  }
+}
+
+/* Offers Page */
+@media (max-width: 576px) {
+  .offers {
+    h4 {
+      text-align: center !important;
+      font-size: 25px !important;
+    }
+    .amounts-offers {
+      .card {
+        img {
+          width: 200px !important;
+          height: 250px !important;
+        }
+      }
+    }
+  }
+}
