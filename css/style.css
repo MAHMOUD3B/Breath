@@ -5,9 +5,9 @@
   --forth-color: #01a744;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-padding-top: 90px; } /* يعوّض الهيدر لكل الأنكورز */
+@media (max-width: 767px){ html { scroll-padding-top: 110px; } }
+
 
 body {
   font-family: "Almarai", sans-serif;
@@ -52,7 +52,7 @@ a {
     }
   }
   .nav-item {
-    padding-left: 15px;
+    padding-left: 10px;
     &:hover .nav-link {
       color: var(--main-color);
     }
@@ -115,16 +115,46 @@ a {
   max-height: 500px; /* Optional to limit video height */
 }
 .product img {
-  max-width: fit-content;
-  position: relative;
-  left: -200px;
-  height: 500px;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  width: 100%;             /* تخلي الصورة تاخد عرض الشاشة */
+  max-width: 100%;         /* تمنع تجاوز العرض */
+  height: auto;            /* تحافظ على نسبة الطول/العرض */
+  display: block;          /* تمنع أي مسافات إضافية */
+  border-radius: 20px;     /* لو محتاج حواف ناعمة */
+  object-fit: cover;       /* تضمن أن الصورة تتغطى بشكل مناسب */
 }
+/* الموبايل */
+@media (max-width: 576px) {
+  .product { 
+    height: auto;          /* سيب الارتفاع على قد المحتوى */
+    padding: 0; 
+  }
+  .product img {
+    width: 100%;
+    height: auto;          /* منع القص نهائيًا */
+    object-fit: contain;   /* تعرض الصورة كاملة بدون قص */
+    border-radius: 0;
+    display: block;
+  }
+}
+
+
+/* التابلت */
+@media (min-width: 577px) and (max-width: 992px) {
+  .product { height: 75vh; }
+  .product img { border-radius: 10px; }
+}
+
+/* الديسكتوب والكبير */
+@media (min-width: 993px) {
+  .product { height: 100vh; }   /* فول سكرين */
+  .product img { border-radius: 20px; }
+}
+
+/* شاشات عريضة جداً (اختياري) */
+@media (min-width: 1400px) {
+  .product { height: 100vh; }   /* يفضل تسيبها فول سكرين برضه */
+}
+
 .mute-button {
   position: absolute;
   bottom: 20px;
@@ -143,22 +173,26 @@ a {
   right: 50%;
   text-align: right;
 }
+
 .carousel-caption span {
   color: var(--secondary-color);
   margin-bottom: 30px;
   font-size: 50px;
 }
+
 .carousel-caption h2 {
   margin-top: 20px;
   background-color: #01818a;
   padding: 8px 15px;
   border-radius: 20px;
 }
+
 .carousel-caption p {
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #01818a;
 }
+
 @media (max-width: 767px) {
   .carousel-caption span {
     font-size: 16px; /* أصغر للموبايل */
@@ -199,6 +233,8 @@ a {
     }
   }
 }
+
+
 .order {
   display: inline-block;
   text-decoration: none;
@@ -250,7 +286,6 @@ a {
 }
 .feat {
   position: relative;
-
   z-index: 999;
   margin-top: -30px;
 }
@@ -327,14 +362,23 @@ a {
   position: relative;
   top: -50px;
 }
-.about-cont h2 {
-  margin-bottom: 10px;
+.about-cont h2{
   font-size: 25px;
-  color: #01818a;
- position: relative;
-  top: -50px;
   font-weight: bold;
+  text-align: center;
+  color: #fff;                 /* نص أبيض عشان الكونتراست */
+  background: #01818a;         /* نفس لون المنتج */
+  display: inline-block;       /* على قدّ الكلام بس */
+  padding: .45rem .9rem;       /* مسافة داخلية بسيطة */
+  border-radius: 10px;         /* حواف دائرية */
+  margin-bottom: 10px;
+  position: relative;
+  top: -50px;                  /* زي ما كنت عامل */
+  box-shadow: 0 6px 18px rgba(0,0,0,.08); /* اختياري: ظل خفيف */
 }
+
+
+
 
 .about-cont p {
   background: #f9f9f9;
@@ -386,10 +430,18 @@ a {
   border-radius: 10px;
   padding-bottom: 15px;
 }
+
+/* إصلاح تمدّد الصورة: نحافظ على النِّسب */
 .about-img-slider img {
-  width: 90%;
-  height: 500px;
+  width: 100%;        /* متوافق مع w-100 في الـHTML */
+  height: auto;       /* أهم تعديل */
+  display: block;
   margin: 10px auto;
+}
+
+/* مؤشرات السلايدر */
+.about-img-slider .carousel-indicators {
+  position: static;
 }
 
 .about-img-slider .carousel-indicators button.thumbnail {
@@ -399,30 +451,40 @@ a {
   background-color: var(--main-color);
   border: 1px solid #aaa;
 }
+
+/* ضبط صورة الـthumbnail لتناسب حجم الزر */
 .about-img-slider .carousel-indicators button.thumbnail img {
-  height: 100px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
 .about-img-slider .carousel-indicators button.thumbnail:not(.active) {
   opacity: 0.5;
 }
-.about-img-slider .carousel-indicators {
-  position: static;
-}
+
 @media screen and (min-width: 992px) {
   .about-img-slider .carousel {
     max-width: 70%;
     margin: 0 auto;
   }
 }
+
 /*about us styling End*/
 
 /* Start How To Use Section */
 .usability {
   .title {
-    margin: 40px auto;
-    color: var(--main-color);
-    text-align: center;
-    font-size: 30px;
+    margin: 40px auto;             /* يوسّط العنصر */
+  width:100%;             /* على قدّ الكلمة */
+  background: var(--main-color);  /* نفس لون اللي فوق */
+  color: #fff;                    /* تباين واضح */
+  font-size: 30px;
+  line-height: 1.2;
+  padding: .8rem .9rem;          /* مسافة داخلية بسيطة */
+  border-radius: 10px;            /* حواف ناعمة */
+  text-align: center;             /* لو العنوان طويل */
+  box-shadow: 0 6px 18px rgba(0,0,0,.08); /* اختياري: ظل خفيف */
   }
   .how-to-use {
     width: 45%;
@@ -582,6 +644,14 @@ a {
   display: inline-block;
   width: 35px;
 }
+.form-check-label1 img{
+    display: inline-block;
+  width: 20px;
+}
+.form-check-label2 img{
+    display: inline-block;
+  width: 25px;
+}
 .payment-btn {
   border: 1px solid #f9fafc;
   margin-right: 10px;
@@ -630,7 +700,7 @@ hr {
   width: 50%;
 }
 .btn-checkout {
-  background-color: #018944;
+  background-color: var(--main-color);
   color: #fff;
   width: 90%;
   margin: 20px auto;
@@ -647,7 +717,7 @@ hr {
 .contact-info p {
   color: var(--secondary-color);
 }
-.contact-field {
+/* .contact-field {
   display: flex;
   margin-bottom: 20px;
 }
@@ -665,13 +735,53 @@ hr {
   display: inline-block;
   width: 50%;
   margin-right: 10px;
-  /* margin-top: 10px; */
   padding-top: 10px;
 }
 .cont-icon img {
   width: 70%;
   margin: 10px;
+} */
+.contact-field{
+  display:flex;
+  align-items:center;
+  gap:14px;             /* المسافة بين الأيقونة والنص */
+  margin-bottom:20px;
 }
+
+.contact-field h5{
+  color:var(--secondary-color);
+  margin:0 0 4px;
+}
+
+.cont-icon{
+  width:60px; height:60px;
+  background-color:var(--secondary-color);
+  border-radius:50%;
+  display:grid;         /* لمركزة الأيقونة */
+  place-items:center;
+  flex:0 0 60px;        /* ثبات الحجم */
+}
+
+.cont-icon img{
+  width:70%;
+  height:auto;
+}
+
+.cont-txt{
+  padding-top:10px;
+  flex:1 1 auto;        /* بدل width:50% و inline-block */
+}
+
+/* لو عندك قسم عربي وعايز الأيقونة يمين */
+.section-ar .contact-field{ flex-direction:row-reverse; }
+
+/* علشان الإيميل/الرقم يفضل LTR داخل العربي */
+.cont-txt p[dir="ltr"]{ direction:ltr; unicode-bidi:bidi-override; }
+
+/* بديل لو مش حابب gap:
+.cont-txt{ margin-inline-start:12px; }
+*/
+
 .top-bar-social {
   float: left;
   padding-top: 6px;
@@ -701,6 +811,69 @@ hr {
     display: block;
   }
 }
+/* ====== Footer Block: HPI address ====== */
+.adrees{
+  text-align:center;
+  padding: 8px 0;
+}
+
+/* شريط السوشيال */
+.adrees .social{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  direction:ltr;        /* يثبّت ترتيب الأيقونات */
+  flex-direction:row;   /* يمنع أي row-reverse جاي من ستايل خارجي */
+  margin-bottom:10px;
+}
+
+.adrees .social a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:28px;           /* مساحة موحّدة لأيكون */
+  height:28px;
+  font-size:20px;       /* حجم الأيقونات */
+  line-height:1;
+  text-decoration:none;
+  color: var(--main-color, #0a6f6e); /* لون ثابت + بديل */
+  transition: opacity .2s ease, transform .2s ease;
+}
+.adrees .social a:hover{ opacity:.85; transform: translateY(-1px); }
+
+/* صورة اللوجو */
+.adrees .image img{
+  display:block;
+  margin:12px auto 0;
+  height:auto;
+  max-width:120px;      /* تمنع الانتفاخ على الشاشات الصغيرة */
+}
+
+/* السطر النصي تحت اللوجو */
+.hpi span{
+  display:inline-block;
+  margin-top:8px;
+  font-size:18px;
+  line-height:1.3;
+  color: var(--secondary-color, #0a6f6e); /* بديل لو المتغيّر مش متعرّف */
+  text-wrap: balance;   /* توزيع سطور ألطف */
+}
+
+/* حمايات خفيفة من تعارضات خارجية */
+.adrees a{ outline: none; }
+.adrees *{ box-sizing: border-box; }
+
+/* استجابة للموبايل */
+@media (max-width:480px){
+  .adrees .social a{
+    width:26px; height:26px; font-size:18px;
+  }
+  .adrees .image img{ max-width:100px; }
+  .hpi span{ font-size:16px; }
+}
+
 /*contact Us Ends*/
 
 /*Footer Start*/

@@ -1,0 +1,145 @@
+/* ===== ألوان وهوية ===== */
+:root{
+  --brand:#117a7f;    /* تركواز الهوية */
+  --ink:#0f1b24;      /* نص داكن */
+  --muted:#5b6870;    /* نص ثانوي */
+  --bg:#ffffff;       /* خلفية بيضاء */
+  --card:#ffffff;     /* كارت أبيض */
+  --radius:18px;
+  --shadow:0 10px 25px rgba(15,27,36,0.08);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+/* ===== خلفية وتوسيط ===== */
+.thank-wrap{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  -webkit-text-size-adjust:100%;
+}
+.thank-container{
+  min-height:100dvh;
+  display:grid;
+  place-items:center;
+  padding:
+    calc(24px + env(safe-area-inset-top))
+    calc(16px + env(safe-area-inset-right))
+    calc(24px + env(safe-area-inset-bottom))
+    calc(16px + env(safe-area-inset-left));
+}
+
+/* ===== الكارت ===== */
+.thank-card{
+  width:min(720px, 92vw);
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:clamp(20px, 4vw, 40px);
+  text-align:center;
+  border:1px solid rgba(17,122,127,0.10);
+}
+
+/* ===== الشارة ===== */
+.thank-badge{
+  width:64px; height:64px;
+  margin:0 auto 16px;
+  border-radius:50%;
+  background:rgba(17,122,127,0.12);
+  color:var(--brand);
+  display:grid; place-items:center;
+}
+
+/* ===== نصوص ===== */
+.thank-title{
+  margin:8px 0 6px;
+  font-size:clamp(28px, 6vw, 42px);
+  line-height:1.15;
+  color:var(--brand);
+}
+.thank-lead{
+  margin:0 0 8px;
+  font-size:clamp(16px, 3.4vw, 20px);
+  font-weight:700;
+}
+.thank-muted{
+  margin:0 0 22px;
+  font-size:clamp(14px, 3vw, 16px);
+  color:var(--muted);
+}
+
+/* ===== الأزرار ===== */
+.thank-actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:stretch;
+  margin-top:6px;
+  flex-wrap:wrap; /* يتحول لسطرين على الموبايل */
+}
+.thank-btn{
+  display:inline-block;
+  padding:14px 20px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:800;
+  line-height:1.2;
+  text-align:center;
+  min-width:220px;
+  transition:
+    transform .15s ease,
+    box-shadow .2s ease,
+    opacity .2s ease,
+    background-color .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+  outline:none;
+}
+
+/* زر أساسي */
+.thank-btn--primary{
+  background:var(--brand);
+  color:#fff;
+  border:1px solid var(--brand);
+  box-shadow:0 6px 16px rgba(17,122,127,0.22);
+}
+.thank-btn--primary:hover{ transform:translateY(-1px); box-shadow:0 10px 24px rgba(17,122,127,0.28); }
+.thank-btn--primary:active{ transform:translateY(0); opacity:.92; }
+.thank-btn--primary:focus-visible{ box-shadow:0 0 0 3px rgba(17,122,127,.25), 0 6px 16px rgba(17,122,127,0.22); }
+
+/* زر ثانوي */
+.thank-btn--outline{
+  background:#fff;
+  color:var(--brand);
+  border:1.5px solid rgba(17,122,127,.6);
+  box-shadow:0 3px 12px rgba(17,122,127,0.10);
+}
+.thank-btn--outline:hover{
+  background:rgba(17,122,127,.08);
+  border-color:var(--brand);
+  transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(17,122,127,0.18);
+}
+.thank-btn--outline:active{ transform:translateY(0); opacity:.96; }
+.thank-btn--outline:focus-visible{ box-shadow:0 0 0 3px rgba(17,122,127,.22), 0 6px 16px rgba(17,122,127,0.14); }
+
+/* ===== ريسبونسف ===== */
+@media (max-width:600px){
+  .thank-card{ width:94vw; padding:clamp(18px,5vw,26px); }
+  .thank-badge{ width:56px; height:56px; margin-bottom:12px; }
+  .thank-btn{ width:100%; min-width:auto; padding:14px 16px; }
+  .thank-actions{ gap:10px; }
+}
+@media (max-width:380px){
+  .thank-card{ padding:16px; border-radius:14px; }
+  .thank-title{ font-size:28px; }
+  .thank-lead{ font-size:15px; }
+  .thank-muted{ font-size:13px; }
+  .thank-badge{ width:48px; height:48px; }
+}
+
+/* تقليل الحركة */
+@media (prefers-reduced-motion: reduce){
+  .thank-btn{ transition:none; }
+}
