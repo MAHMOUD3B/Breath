@@ -60,9 +60,12 @@
 
 /* How To Use Page */
 @media (max-width: 576px) {
-  .how-use-feild {
-    h3 {
-      font-size: 18px !important;
+  .usability {
+    margin-block: 0 !important;
+    .how-use-feild {
+      h3 {
+        font-size: 18px !important;
+      }
     }
   }
 }

@@ -932,3 +932,57 @@ hr {
   z-index: 1000;
 }
 /* Buy Now Button End */
+
+/* ===== Confirm Modal ===== */
+.confirm-modal { 
+  position: fixed; inset: 0; z-index: 1050; display: none; 
+  align-items: center; justify-content: center; direction: rtl; font-family: inherit;
+}
+.confirm-modal.show { display: flex; }
+.confirm-backdrop {
+  position: absolute; inset: 0; background: rgba(0,0,0,.45);
+}
+.confirm-dialog {
+  position: relative; width: min(680px, 92vw); max-height: 86vh; overflow: auto;
+  background: #fff; border-radius: 16px; padding: 20px 20px 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+.confirm-close {
+  position: absolute; inset-inline-end: 10px; top: 6px; border: 0; background: transparent;
+  font-size: 28px; line-height: 1; cursor: pointer; color: #444;
+}
+.confirm-title {
+  margin: 0 0 12px; font-weight: 700; font-size: 20px; color: #111; text-align: center;
+}
+.confirm-body { padding: 6px 2px 2px; }
+.confirm-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.confirm-list li {
+  display: grid; grid-template-columns: 130px 1fr; gap: 10px;
+  padding: 10px 12px; border: 1px solid #eee; border-radius: 12px; background: #fafafa;
+  align-items: start;
+}
+.confirm-list .k { color: #555; font-weight: 600; }
+.confirm-list .v { color: #111; word-break: break-word; }
+.confirm-note { margin: 10px 2px 0; font-size: 13px; color: #666; }
+
+.confirm-actions {
+  display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px;
+}
+.confirm-actions .btn {
+  padding: 10px 16px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700;
+}
+.confirm-actions .btn-edit { background: #f1f1f1; color: #111; }
+.confirm-actions .btn-confirm { background: #0d6efd; color: #fff; }
+
+/* اختياري: تحسين مظهر العناصر غير الصالحة */
+.form-control.is-invalid { border-color: #dc3545; }
+
+/* Start Checkout Page */
+.contact-us {
+  .contact-us-content {
+    #qty::placeholder {
+      font-size: 14px;
+    }
+  }
+}
+/* End Checkout Page */
